@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+    <title>Login</title>
+    
+  <link rel="stylesheet" href="onsenui.css">
+  <link rel="stylesheet" href="onsen-css-components.css">
+<script src="jquery.js"></script>
+  <script src="onsenui.js"></script>
+    <script src="jquery1.4.2.js"></script>
+
+  <style>
+    .dialog-container {
+      height: 250px;
+    }
+      
+      
+      .button{
+    
+    background-color: white;
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(white));
+    background: -webkit-linear-gradient(top, white, white);
+    background: -moz-linear-gradient(top, white, white);
+    background: -ms-linear-gradient(top, white, white);
+    background: -o-linear-gradient(top, white, white);
+    background: linear-gradient(top, white, white);
+    color: black;
+    font-family: "Segoe UI Light", Arial, sans-serif;
+    border-radius:10px;
+    padding: 6px 20px;
+    font-size: 20px;
+          
+      }
+          
+              #loginbox{
+          position: relative;
+          width: 250px;
+          height: 250px;
+          background-color: skyblue;
+          border-radius: 30%;
+          padding: 6px 25px;
+          
+          top: 100px;
+          
+      }
+      #con{
+          position: relative;
+          top: 20%;
+      
+        }
+  </style>
+    
+    
+    
+    </head>
+<body onload="closeDiv(); np();">
+
+  
+    <ons-page>
+        <center>
+        <div id="loginbox">
+            <div id="con">
+        <center>
+            
+            
+        <div id="wrongP" hidden="hidden" style="color:red;">Wrong password</div>
+            <div id="items"></div>
+        
+        
+         
+        <ons-input modifier="underbar" id="itemName" placeholder="Password"></ons-input>
+        <br>
+            <br>
+        
+            <ons-button class="btn btn-info" id="savedItem" >Sign In</ons-button>
+            
+           <br>
+            <br>
+            
+<div id='p'><a type='button' id='hideshow' onclick="np()" class='color'>Click to set password</a></div>
+            
+            <div id="reset" hidden="hidden"><a type='button' id='hideshow2' class='color'>Reset password</a></div>  
+            
+            <div id="resetContent" hidden="hidden">
+            
+            
+          <ons-input type="text" modifier="underbar" placeholder="old password" id="textfield2"></ons-input>
+      <br><br>
+          
+         <a type='button' > <ons-button  type="button" onclick="remove();" value="save" id='save2'>submit</ons-button></a>
+    
+            
+            
+            </div>
+            
+<div id="content" hidden="hidden">
+          
+  
+          <ons-input type="text" modifier="underbar" placeholder="Set Password" id="textfield"></ons-input>
+      <br><br>
+          
+         <a type='button' > <ons-button  type="button" value="save" id='save'>save</ons-button></a>
+    
+      
+        
+</div>
+    
+        </center>
+        
+<script type="text/javascript">
+    
+    document.getElementById("save").onclick = function(){
+       var a = document.getElementById("textfield").value;
+        
+
+        localStorage.setItem('password',a);
+       
+        localStorage.setItem('closeId',close);
+ 
+           setTimeout(function(){
+      window.location="login.html";
+    }, 2000);  
+          
+        }
+    var close = hideshow.style.visibility="hidden";
+    var close2 = localStorage.getItem('closeId');
+  
+      var p = localStorage.getItem('password');  
+    
+    
+        document.getElementById("savedItem").onclick = function(){
+       var a = document.getElementById("itemName").value;
+     
+        if(a == p){
+        setTimeout(function(){
+      window.location="SimpleStock.html";
+    }, 2000);
+        
+        }
+            if(a != p){
+            wrongP.style.visibility="visible";
+            $('#wrongP').fadeIn(1000).delay(1000).fadeOut(1000);
+            }
+          
+        }
+        
+        function np(){
+        jQuery(document).ready(function(){
+    jQuery('#hideshow').live('click', function(event) {        
+         jQuery('#content').toggle('show');
+        jQuery('#p').toggle('hide');
+    });
+             jQuery('#save').live('click', function(event) {        
+         jQuery('#content').toggle('hide');
+         jQuery('#p').toggle('hide');
+         jQuery('#hideshow').toggle('hide');
+         jQuery('#reset').toggle('show');
+         
+     
+
+        
+       
+          
+        
+   
+ 
+    });
+});
+                 
+            
+            
+            
+    
+   }
+      
+        
+    
+    function closeDiv(){
+          jQuery('#reset').toggle('show');
+        
+        jQuery(document).ready(function(){
+    jQuery('#hideshow2').live('click', function(event) { 
+        
+         jQuery('#resetContent').toggle('show');
+        
+        loginbox.style.height= 400 + "px";
+    if(resetContent.hide){
+    
+        loginbox.style.height= 250 + "px";
+    }
+          
+         
+});
+        
+        });
+        
+        
+        
+        
+        document.getElementById("save2").onclick = function(){
+           
+        
+      
+            var a2 = document.getElementById("textfield2").value;
+            
+            if(a2 == p){
+              localStorage.removeItem('password');
+            jQuery('#content').toggle('show');
+         jQuery('#p').toggle('show');
+         jQuery('#hideshow').toggle('show');
+         jQuery('#hideshow2').toggle('hide');
+        jQuery('#resetContent').toggle('hide');
+       
+            }
+            
+            if(a2 != p){
+            wrongP.style.visibility="visible";
+            $('#wrongP').fadeIn(1000).delay(1000).fadeOut(1000);
+            }
+          
+        }
+        
+    }
+    
+
+    
+</script>
+                
+                </div>
+        </div>
+            
+                        
+        </center>
+            
+    </ons-page>
+ 
+
+</body>
+</html>
+ 
+
+

@@ -1,0 +1,2852 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+  <title>SimpleStock</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="jquery-ui.css">
+  <link rel="stylesheet" href="onsenui.css">
+  <link rel="stylesheet" href="onsen-css-components.css">  
+
+     <script src="jquery.js"></script>
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+    <script src="onsenui.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="jquery-3.1.1.js"></script>
+    <script src="calculate.js"></script>
+    <script src="P.calculator.js"></script>
+     <script src="angular.min.js"></script>     
+    
+    <style>
+        
+        #reset2{
+            
+            
+        }
+        
+      #Calculate2{
+            
+            
+        }
+        
+
+
+
+        #box1{
+            background-color: tan;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 150px;
+            left: 33%;
+            
+
+        }
+        
+        #box2{
+            background-color: limegreen;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            left: 80px;
+            top: 200px;
+            display: none;
+        }
+        #box3{
+            background-color: skyblue;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            left: 150px;
+            top: 250px;
+            
+        }
+        #sbox1{
+            top: 10px;
+            position: relative;
+            background-color: tan;
+            width: 90%;
+            height: 60%;
+            left: 10px;
+            visibility: hidden;  
+        }
+        
+        #sd{
+            
+            position: relative;
+            width: 20px;
+            height: 20px;
+            top: 20px;
+            left: 10px;
+            background-color: black;
+        }
+       
+        #memDiv{
+            position: relative;
+            background-color: skyblue;
+            width: 80%;
+            height: 50%;
+            left: 4.0%;
+            top: 15px;
+            
+        }
+        
+        #ta1{
+            
+            top:20px;
+            
+            width: 50px;
+            height: 50px;
+            position: relative;
+             outline: none;
+            visibility: hidden;
+            left: 0%;
+            }
+        #ta2{
+            left: 4px;
+            top: 25px;
+            width: 50px;
+            height: 50px;
+            position: relative;
+            margin: 0 auto;
+            outline: none;
+            visibility: hidden;
+            left: 4%;
+            }
+        #ta3{
+            left: 4px;
+            top: 7px;
+            width: 50px;
+            height: 50px;
+            position: relative;
+            margin: 0 auto;
+            outline: none;
+            visibility: hidden;
+            }
+        #sb{
+            position: relative;
+            width: 15px;
+            height: 15px;
+            left: 36px;
+            top: 17px;
+            color: white;
+            font-size: 50px;
+            font-family: sans-serif;
+        }
+        #sb2{
+           position: relative;
+            visibility: hidden; 
+            background-image: url(x.png);
+            width: 31px;
+            height: 31px;   
+        }
+        #sb3{
+            position: relative;
+            background-color: aliceblue;
+            height: 15px;
+            width: 15px;
+            left: 100%;
+            
+        }
+        #sb4{
+             position: relative;
+            background-image: url(x.png);
+            width: 31px;
+            height: 31px;
+            visibility: hidden;
+        }
+         #sb5{
+           position: relative;
+            background-color: aliceblue;
+            width: 15px;
+            height: 15px;
+            left: 100%;
+             
+        }
+        #sb6{
+            position: relative;
+           background-image: url(x.png);
+            width: 31px;
+            height: 31px;
+            visibility: hidden;
+        }
+        #p1{
+            position: relative;
+            top: 5px;
+            
+        }
+        
+        #submit4{
+            
+            position: relative;
+            top: 25px;
+            left: 5px;
+        }
+        
+      #myInput {
+    background-image: url('/css/searchicon.png');/* Add a search icon to input */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd;/* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myUL {
+    /* Remove default list styling */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#myUL li a {
+    border: 1px solid #ddd;/* Add a border to all links */
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6; /* Grey background color */
+    padding: 12px; /* Add some padding */
+    text-decoration: none;/* Remove default text underline */
+    font-size: 18px; /* Increase the font-size */
+    color: black; /* Add a black text color */
+    display: block; /* Make it into a block element to fill the whole list */
+}
+
+#myUL li a.header {
+    background-color: #e2e2e2; /* Add a darker background color for headers */
+    cursor: default; /* Change cursor style */
+}
+
+#myUL li a:hover:not(.header) {
+    background-color: #eee;/* Add a hover effect to all links, except for headers */
+}
+      
+       .button{
+            position: relative;
+            top: 400px;
+        }
+
+  body {
+    
+      background-color: rgba(0, 0, 0, 0.1);
+      
+  }
+              
+  #section1 {position: relative; padding-top:50px; ;  height:800px;color: #fff; background-color: lightblue;
+      color: black;}
+  #section2 {position: relative; padding-top:50px; ;  height:800px;color: #fff; background-image: url(cal%20section.png);
+      color: black;}
+  #section3 {position: relative; padding-top:50px; ;  height:800px;color: #fff; background-color:powderblue;
+      color: black;}
+  #section4 {position: relative; padding-top:50px; ;  height:800px;color: #fff; background-image: url(cal%20section.png);
+      color: black;}
+        
+ 
+      
+  #section5 {position: relative; padding-top:50px; ;  height:800px;color: #fff; background-color: gainsboro;
+      color: black;}
+  #section6 {position: relative; padding-top:50px; ;  height:800px;color: #fff; background-color: whitesmoke;
+      color: black;}
+  #section7 {position: relative; padding-top:50px; ;  height:500px;color: #fff; background-color:gainsboro;
+      color: black;}
+      
+      
+    /*alert-dialog*/
+          
+          .button3{
+    position:relative;
+    background-image: url(bin%20new.png);
+    width: 22px;
+    height: 26px;
+      
+        }
+.button3:hover {
+	position:relative; 
+    background-image: url(bin%20new2.png);
+    width: 22px;
+    height: 26px;
+    
+    
+}
+
+.button3:active {
+   position:relative; 
+    background-image: url(bin%20new2.png);
+    width: 22px;
+    height: 26px;
+    
+        }
+      
+      .button4{
+    position:relative;
+    background-image: url(pen%20new.png);
+    width: 19px;
+    height: 19px;
+           
+        }
+.button4:hover {
+	position:relative;
+    background-image: url(pen%20new2.png);
+    width: 19px;
+    height: 19px;
+}
+
+.button4:active {
+   position:relative;
+    background-image: url(pen2.png);
+    width: 18px;
+    height: 18px;
+        }
+      
+      #t{
+          font-family: sans-serif;
+      }
+      
+      
+      
+      
+ .figures{
+            
+            color: skyblue;
+            font-size: 30px;
+            
+        }
+    .button{
+    
+    background-color: #E1EDCF;
+    background: -webkit-gradient(linear, left top, left bottom, from(#E1EDCF), to(#E1EDCF));
+    background: -webkit-linear-gradient(top, #E1EDCF, #E1EDCF);
+    background: -moz-linear-gradient(top, #E1EDCF, #E1EDCF);
+    background: -ms-linear-gradient(top, #E1EDCF, #E1EDCF);
+    background: -o-linear-gradient(top, #E1EDCF, #E1EDCF);
+    background: linear-gradient(top, #E1EDCF, #E1EDCF);
+    color: black;
+    font-family: "Segoe UI Light", Arial, sans-serif;
+    border-radius:10px;
+    padding: 6px 20px;
+    font-size: 20px;
+        }
+    
+
+.button:hover {
+	opacity: .85;
+	cursor: pointer;
+}
+
+.button:active {
+    border: 1px solid #E1EDCF;
+    box-shadow: 0 0 10px 5px #E1EDCF inset; 
+    -webkit-box-shadow:0 0 10px 5px #E1EDCF inset ;
+    -moz-box-shadow: 0 0 10px 5px #E1EDCF inset;
+    -ms-box-shadow: 0 0 10px 5px #E1EDCF inset;
+    -o-box-shadow: 0 0 10px 5px #E1EDCF inset;
+        }
+      
+        
+        #move {
+          
+          position: relative;
+          
+          bottom: 300px;
+      }
+      
+      
+      #p{
+          position: relative;
+          bottom: 400px;
+          width: 100px;
+          height: 100px;
+      }
+      
+      #I{
+          position: relative;
+          width: 100%;
+          height: 400px;
+        bottom: 330px;
+          visibility: hidden;
+          
+      }
+      #I2{
+          position: relative;
+          width: 100%;
+          height: 100%; 
+          left: 100px;
+          background-color: rgba(0, 0, 0, 0.1);
+          visibility: hidden;
+          bottom:  100px;
+          
+      }
+      #container{
+      position: relative;
+          bottom: 50px;
+      
+      }
+        
+        #container2{
+      position: relative;
+          top: 10px;
+      
+      }
+      #I3{
+          position: relative;
+          width: 10px;
+          height: 10px;
+          
+          left: 200px;
+          background-color: rgba(0, 0, 0, 0.1);
+          visibility: hidden;
+          bottom: 0px;
+          
+      }
+        #updateBox{
+        position: relative;
+        width: 100% ;
+        height: 400px;
+        bottom: 50px;
+        }
+        
+        #stockUpdate{
+          position: relative;
+          width: 10px;
+          height: 10px;
+          top: 100px;
+          background-color: rgba(0, 0, 0, 0.1);
+          left: 4px;
+      }
+       #stockUpdate1{
+          position: absolute;
+          width: 100px;
+          height: 100px; 
+          left: 200px;
+          background-color: rgba(0, 0, 0, 0.1);
+          bottom: 115px;
+          
+      }
+        #stockUpdate2{
+          position: relative;
+          width: 10px;
+          height: 10px; 
+          left: 100px;
+          background-color: rgba(0, 0, 0, 0.1);
+          bottom: -115px;
+          
+      }
+        
+        
+      #c{
+          position: absolute;
+          right: 15px;
+          
+          visibility: hidden;
+          
+          
+      }
+       
+      
+      
+          
+      }
+      #bg2{
+          position: relative;
+          width: 200px;
+          height: 200px;
+          background-color: white;
+          border-radius: 20%;
+          padding: 6px 12px;
+          right: 4%;
+          top: 0px;
+      }
+      
+      
+      #deletebox{
+        position: relative;
+          bottom: 40%;
+          width: 112%;
+          height: 800px;
+          visibility: hidden;
+          right: 15px;
+        background-color: rgba(0,0,0,0.3);
+      }
+      
+      #dtext{
+          font-size: 20px;
+          color: black;
+      }
+        
+        
+        
+      #bg1{
+          position: relative;
+          width: 200px;
+          height: 200px;
+          background-color: white;
+          border-radius: 20%;
+          padding: 6px 12px;
+          right: 4%;
+          top: 200px;
+          
+      }
+      
+      
+      #deletebox1{
+        position: relative;
+          bottom: 40%;
+          width: 112%;
+          height: 820px;
+          visibility: hidden;
+          right: 15px;
+        background-color: rgba(0,0,0,0.3);
+      }
+      
+      #dtext1{
+          font-size: 20px;
+          color: black;
+      }
+      
+        
+        
+        #cal1{
+            
+            position: relative;
+            bottom: 510px;
+            left:;
+            display: none;
+        }
+        #cal{
+            
+            position: relative;
+            bottom: -10px;
+            left:;
+        
+        }
+        
+        #up{
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            bottom:-65px;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+        
+        #amount2{
+            display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+
+        }
+        
+         #intrest2{
+            display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+
+        }
+        
+        #si{
+        position: relative;
+        
+        }
+        
+        #searchIcon{
+        position: relative;
+        width: 34px;
+        height: 34px;
+        background-image: url(searchIcon.png);
+        right: 103px;
+        bottom: 34px;
+        border-color: lightgreen;
+        }
+        #input{
+        border-color: lightgreen;
+        
+        }
+        
+#floating{
+        position:relative;
+        top:35px;
+        background-image: url(moving%20title%20div.png);
+        width:2337px;
+        height: 30px;
+    
+}
+  </style>
+    
+    
+    
+    
+    <script>
+    
+      var studentsArray3 =[];
+        
+    
+    function init3(){
+      
+        document.getElementById("tablerows3").innerHTML="";
+        
+        if (localStorage.studentsRecord3){
+            studentsArray3 = JSON.parse(localStorage.studentsRecord3);
+             for (var a=0; i < studentsArray3.length; a++) {
+                 
+             }
+            for (var i=0; i < studentsArray3.length; i++) {
+
+perpareTableCell3(i,studentsArray3[i].name,studentsArray3[i].date,studentsArray3[i].opcl,studentsArray3[i].time,studentsArray3[i].type,studentsArray3[i].litres,studentsArray3[i].weight,studentsArray3[i].unitprice,studentsArray3[i].wsale,studentsArray3[i].oldstock,studentsArray3[i].newstock,studentsArray3[i].sold,studentsArray3[i].Profit, studentsArray3[i].Profit2,studentsArray3[i].cashin,studentsArray3[i].expenses);
+                
+                
+        
+            }
+        }
+    }
+    
+        
+   
+     
+    function onRegisterPressed2 () {
+        
+         var name = document.getElementById("name").value;
+         var date = document.getElementById("date").value;
+          var time = document.getElementById("time").value;
+          var opcl = document.getElementById("opcl").value;
+       
+        var type = document.getElementById("type").value;
+        var litres = document.getElementById("litres").value;
+         var weight = document.getElementById("weight").value;
+        var unitprice = document.getElementById("unitprice").value;
+        var wsale = document.getElementById("wsale").value;
+        var oldstock = document.getElementById("oldstock").value;
+        var newstock = document.getElementById("newstock").value;
+        var total = (oldstock * 1) + (newstock * 1);
+        var sold = document.getElementById("sold").value;
+        var currentstock = (total * 1) - (sold * 1);
+         var profit = (sold * 1) * (unitprice * 1);
+        var profit2 = ((sold * 1) * (unitprice * 1)) - (((oldstock * 1) + (newstock * 1))*(wsale * 1));
+        var expenses = (total * wsale); 
+        var cashin = document.getElementById("cashin").value;
+        
+        var stuObj= { name:name,
+                    date:date,
+                     time:time,
+                     opcl:opcl,
+                     type:type,
+                     litres:litres,
+                     weight:weight,
+                     unitprice:unitprice,
+                     wsale:wsale,
+                     oldstock:oldstock,
+                    newstock:newstock,
+                    total:total,
+                    sold:sold,
+                    currentstock:currentstock,
+                    profit:profit,
+                     profit2:profit2,
+                     expenses:expenses,
+                    cashin:cashin}
+       var tp =[];
+        
+     if (selectedIndex === -1){
+          studentsArray3.push(stuObj); 
+        
+          
+        }else{
+            
+            studentsArray3.splice(selectedIndex,1,stuObj);
+        }
+                     
+        localStorage.studentsRecord3 = JSON.stringify(studentsArray3);
+        init3();
+        onclarpressed2();
+        document.getElementById("name").value; 
+document.getElementById("date").value; 
+document.getElementById("time").value;
+document.getElementById("opcl").value;  
+document.getElementById("type").value;    
+document.getElementById("litres").value;
+document.getElementById("weight").value;
+document.getElementById("unitprice").value;
+document.getElementById("wsale").value;
+document.getElementById("oldstock").value;
+document.getElementById("newstock").value;
+document.getElementById("sold").value;
+document.getElementById("cashin").value;
+
+
+                
+    }
+
+        
+        function perpareTableCell3 (index,name,date,opcl,time,type,litres,weight,unitprice,wsale,oldstock,newstock,sold,total,currentstock,profit,profit2,expenses,cashin) {
+            var table2 = document.getElementById("tablerows3");
+            var row2 = table2.insertRow();
+            var actionCell = row2.insertCell(0);
+            var nameCell = row2.insertCell(1);
+            var dateCell = row2.insertCell(2);
+            var opclCell = row2.insertCell(3);
+            var timeCell = row2.insertCell(4);
+            var typeCell = row2.insertCell(5);
+            var litresCell = row2.insertCell(6);
+            var weightCell = row2.insertCell(7);
+            var unitpriceCell = row2.insertCell(8);
+            var wsaleCell = row2.insertCell(9);
+            var oldstockCell = row2.insertCell(10);
+            var newstockCell = row2.insertCell(11);
+            var totalCell = row2.insertCell(12);
+            var soldCell = row2.insertCell(13);
+            var currentstockCell = row2.insertCell(14);
+            var profitCell = row2.insertCell(15);
+            var profit2Cell = row2.insertCell(16);
+            var expensesCell = row2.insertCell(17);
+            var cashinCell = row2.insertCell(18);
+            
+           
+            
+            
+            actionCell.innerHTML = '<center><div onclick="onEditpressed2('+index+')"  class="button4" ><ul class="nav navbar-nav"><li><a href="#section3" data-target="#myNavbar"></a></li></ul></div><br><div onclick="deleteTableRow2('+index+')" class="button3" ></div></center>';
+            nameCell.innerHTML = name;
+            dateCell.innerHTML = date;
+            timeCell.innerHTML = time;
+            opclCell.innerHTML = opcl;
+            
+            typeCell.innerHTML = type;
+            litresCell.innerHTML = litres;
+            weightCell.innerHTML = weight;
+            unitpriceCell.innerHTML = unitprice;
+            wsaleCell.innerHTML = wsale;
+            oldstockCell.innerHTML = oldstock;
+            newstockCell.innerHTML = newstock;
+            totalCell.innerHTML = (oldstock * 1) + (newstock * 1);
+            soldCell.innerHTML = sold;
+            var total1= (oldstock * 1) + (newstock * 1);
+            currentstockCell.innerHTML = (total1 * 1) - (sold * 1);
+            profitCell.innerHTML = (sold * 1) * (unitprice * 1);
+            profit2Cell.innerHTML = ((sold * 1) * (unitprice * 1)) - (((oldstock * 1) + (newstock * 1))*(wsale * 1));
+            expensesCell.innerHTML =(total1 * wsale); 
+            
+            var pt =profit2Cell.innerText;
+            
+        
+               localStorage.setItem('p',pt);
+
+
+        }
+
+    
+    
+        function deleteTableRow2(index){
+        /*var table = document.getElementById("regtable"); 
+        table.deleteRow(index+1);
+         class="btn btn-info"
+        */
+        deletebox.style.visibility ="visible";
+        deletebox.style.bottom = 320 + "px";
+        bg2.style.top = 1250 + "px";
+        
+        document.getElementById("yes").onclick= function() {
+        
+         studentsArray3.splice(index,1);
+        localStorage.studentsRecord3 = JSON.stringify(studentsArray3);
+        init3();
+         
+            deletebox.style.visibility ="hidden";
+            
+             setTimeout(function(){
+    add();
+    }, 2000);
+            
+            setTimeout(function(){
+                si.style.display="none";
+                $('#input').val(''); 
+    }, 2000);
+        }
+        
+        document.getElementById("no").onclick= function(){
+            
+            deletebox.style.visibility ="hidden";
+        }
+        
+       
+    
+    }
+    
+    function onclarpressed2(){
+        selectedIndex = -1;
+    document.getElementById("name").value="";    
+document.getElementById("date").value="";
+document.getElementById("time").value=""; 
+document.getElementById("opcl").value="";
+    
+document.getElementById("type").value="";    
+document.getElementById("litres").value="";
+document.getElementById("weight").value="";
+document.getElementById("unitprice").value="";
+document.getElementById("wsale").value="";
+document.getElementById("oldstock").value="";
+document.getElementById("newstock").value="";
+document.getElementById("sold").value="";
+document.getElementById("cashin").value="";
+document.getElementById('submit2').innerHTML = "Saved";
+setTimeout(function(){
+      document.getElementById('submit2').innerHTML = "Register";
+    }, 2000);
+        
+        setTimeout(function(){
+    add();
+    }, 2000);
+            
+    }
+        
+    
+    var selectedIndex = -1;
+    function onEditpressed2(index){
+        selectedIndex = index;
+        var stuObj = studentsArray3[index];
+        document.getElementById("name").value=stuObj.name;  
+document.getElementById("date").value=stuObj.date; 
+        document.getElementById("time").value=stuObj.time; 
+document.getElementById("opcl").value=stuObj.opcl;
+ 
+document.getElementById("type").value=stuObj.type;    
+document.getElementById("litres").value=stuObj.litres;
+document.getElementById("weight").value=stuObj.weight;
+document.getElementById("unitprice").value=stuObj.unitprice;
+document.getElementById("wsale").value=stuObj.wsale;
+document.getElementById("oldstock").value=stuObj.oldstock;
+document.getElementById("newstock").value=stuObj.newstock;
+document.getElementById("sold").value=stuObj.sold;
+document.getElementById("cashin").value=stuObj.cashin;
+document.getElementById("up").value=stuObj.unitprice;         
+   document.getElementById('submit2').innerHTML = "update"; 
+       
+        setTimeout(function(){
+                si.style.display="none";
+             $('#input').val(''); 
+    }, 2000); 
+        
+    }
+        
+        
+      </script>
+    
+    
+    <script>
+    
+      var studentsArray2 =[];
+    
+    function init2(){
+       document.getElementById("tablerows2").innerHTML="";
+        
+        
+        if (localStorage.studentsRecord2){
+            studentsArray2 = JSON.parse(localStorage.studentsRecord2);
+            for (var i=0; i < studentsArray2.length; i++) {
+
+perpareTableCell2(i,studentsArray2[i].email,studentsArray2[i].number,studentsArray2[i].firstname,studentsArray2[i].surname,studentsArray2[i].sud,studentsArray2[i].ed,studentsArray2[i].comment);
+                
+                
+        
+            }
+        }
+        
+        
+    }
+    
+     
+     
+    function onRegisterPressed() {
+        var email = document.getElementById("email").value;
+        var number = document.getElementById("number").value;
+        var firstname = document.getElementById("firstname").value;
+        var surname = document.getElementById("surname").value;
+        var sud = document.getElementById("sud").value;
+        var ed = document.getElementById("ed").value;
+       var comment = document.getElementById("comment").value;
+        
+        
+        
+        var stuObj= { email:email,
+                     number:number,
+                     firstname:firstname,
+                     surname:surname,
+                     sud:sud,
+                     ed:ed,
+                    comment:comment}
+       
+        
+     if (selectedIndex === -1){
+          studentsArray2.push(stuObj);   
+          
+        }else{
+            
+            studentsArray2.splice(selectedIndex,1,stuObj);
+        }
+                     
+        localStorage.studentsRecord2 = JSON.stringify(studentsArray2);
+        init2();
+        onclarpressed3();
+                
+document.getElementById("email").value="";
+document.getElementById("number").value="";
+document.getElementById("firstname").value="";
+document.getElementById("surname").value="";
+document.getElementById("sud").value="";
+document.getElementById("ed").value="";
+document.getElementById("comment").value="";
+
+
+                
+    }
+        function perpareTableCell2 (index,email,number,firstname,surname,sud,ed,comment) {
+            var table = document.getElementById("tablerows2");
+            var row = table.insertRow();
+            var actionCell = row.insertCell(0);
+            var emailCell = row.insertCell(1);
+            var numberCell = row.insertCell(2);
+            var firstnameCell = row.insertCell(3);
+            var surnameCell = row.insertCell(4);
+            var sudCell = row.insertCell(5);
+            var edCell = row.insertCell(6);
+            var commentCell = row.insertCell(7);
+            
+            
+            
+            actionCell.innerHTML = '<center><div onclick="onEditpressed('+index+')" class="button4" ><ul class="nav navbar-nav"><li><a href="#section5" data-target="#myNavbar"></a></li></ul></div></center><br><center><div onclick="deleteTableRow('+index+')" class="button3" ></div></center>';
+            emailCell.innerHTML = email;
+            numberCell.innerHTML = number;
+            firstnameCell.innerHTML = firstname;
+            surnameCell.innerHTML = surname;
+            sudCell.innerHTML = sud;
+            edCell.innerHTML = ed;
+            commentCell.innerHTML = comment;
+            
+            
+            
+           
+            
+        }
+        
+       
+     
+    function deleteTableRow(index){
+        /*var table = document.getElementById("regtable"); 
+        table.deleteRow(index+1);
+         class="btn btn-info"
+        */
+        deletebox1.style.visibility ="visible";
+        deletebox1.style.bottom= 290 + "px";
+        document.getElementById("yes1").onclick= function() {
+        
+        studentsArray2.splice(index,1);
+        localStorage.studentsRecord2 = JSON.stringify(studentsArray2);
+        init2();
+         
+            deletebox1.style.visibility ="hidden";
+        }
+        
+        document.getElementById("no1").onclick= function(){
+            
+            deletebox1.style.visibility ="hidden";
+        }
+    
+    }
+    
+     
+   
+     
+    
+    function onclarpressed3(){
+        selectedIndex = -1;
+        
+                
+document.getElementById("email").value="";
+document.getElementById("number").value="";
+document.getElementById("firstname").value="";
+document.getElementById("surname").value="";
+document.getElementById("sud").value="";
+document.getElementById("ed").value="";
+document.getElementById("comment").value="";
+        
+document.getElementById('submit').innerHTML = "Saved";
+        
+        setTimeout(function(){
+      document.getElementById('submit').innerHTML = "Register";
+    }, 2000);
+       
+ 
+            
+    }
+    
+        
+    
+    var selectedIndex = -1;
+    function onEditpressed(index){
+        selectedIndex = index;
+        var stuObj = studentsArray2[index];
+        document.getElementById("email").value = stuObj.email;
+        document.getElementById("number").value = stuObj.number;
+        document.getElementById("firstname").value=stuObj.firstname;
+        document.getElementById("surname").value = stuObj.surname;
+        document.getElementById("sud").value =stuObj.sud;
+        document.getElementById("ed").value = stuObj.ed;
+        document.getElementById("comment").value = stuObj.comment;
+        document.getElementById('submit').innerHTML = "Update";
+        
+      
+        
+    }
+        
+    </script>   
+  
+    <script>
+      var studentsArray4 =[];
+    
+    function init4(){
+       document.getElementById("tablerows5").innerHTML="";
+        
+        
+        if (localStorage.studentsRecord4){
+            studentsArray4 = JSON.parse(localStorage.studentsRecord4);
+            for (var i=0; i < studentsArray4.length; i++) {
+
+perpareTableCell4(i,studentsArray4[i].date1,studentsArray4[i].time1,studentsArray4[i].ta1);
+                
+                
+        
+            }
+        }
+    }
+    
+     
+     
+    function onRegisterPressed4() {
+        
+ 
+        var date1 = document.getElementById("date1").value;
+        var time1 = document.getElementById("time1").value;
+        var ta1 = document.getElementById("ta1").value;
+        
+        
+        
+        var stuObj= {
+                     date1:date1,
+                     time1:time1,
+                    ta1:ta1}
+       
+        
+     if (selectedIndex === -1){
+          studentsArray4.push(stuObj);   
+          
+        }else{
+            
+            studentsArray4.splice(selectedIndex,1,stuObj);
+        }
+                     
+        localStorage.studentsRecord4 = JSON.stringify(studentsArray4);
+        init4();
+        onclarpressed();
+document.getElementById("date1").value="";
+document.getElementById("time1").value="";
+document.getElementById("ta1").value="";
+
+
+                
+    }
+        function perpareTableCell4 (index,date1,time1,ta1) {
+            var table = document.getElementById("tablerows5");
+            var row = table.insertRow();
+            var actionCell = row.insertCell(0);
+            var date1Cell = row.insertCell(1);
+            var time1Cell = row.insertCell(2);
+            var ta1Cell = row.insertCell(3);
+            
+            
+            
+            
+            actionCell.innerHTML = '<center><div onclick="onEditpressed4('+index+')" class="button4" ></div></center><br><center><div onclick="deleteTableRow4('+index+')" class="button3" ></div></center>';
+            date1Cell.innerHTML = date1;
+            time1Cell.innerHTML = time1;
+            ta1Cell.innerHTML = ta1;
+            
+            
+            
+            
+           
+            
+        }
+        
+       
+     
+    function deleteTableRow4(index){
+       /* var table = document.getElementById("regtable"); 
+        table.deleteRow(index+1);
+         */
+        
+         
+        
+      
+          studentsArray4.splice(index,1);
+        localStorage.studentsRecord4 = JSON.stringify(studentsArray4);
+        init4();
+        
+    }
+     
+   
+     
+    
+    function onclarpressed(){
+        selectedIndex = -1;
+        
+                
+document.getElementById("date1").value="";
+document.getElementById("time1").value="";
+document.getElementById("ta1").value="";
+document.getElementById('submit4').innerHTML = "Saved";
+ 
+      setTimeout(function(){
+      document.getElementById('submit4').innerHTML = "Save";
+    }, 2000);      
+    }
+    
+    var selectedIndex = -1;
+    function onEditpressed4(index){
+        selectedIndex = index;
+        var stuObj = studentsArray4 [index];
+        document.getElementById("date1").value=stuObj.date1;
+        document.getElementById("time1").value=stuObj.time1;
+        document.getElementById("ta1").value=stuObj.ta1;
+        document.getElementById('submit4').innerHTML = "Update";
+        
+        
+        
+    }
+
+
+        
+      </script>
+   
+    <script>
+    
+    function h(){
+        if(1<2){
+            
+            c.style.visibility ="visible" ;
+          move.style.visibility ="hidden" ; 
+          I.style.visibility ="visible" ;
+         
+            
+        
+          
+        }
+    }
+       function tom(){
+        if(1<2){
+            c.style.visibility ="hidden";
+          move.style.visibility ="visible" ; 
+          I.style.visibility ="hidden" ;
+        
+     
+        }
+        } 
+       
+
+    
+    </script>
+    
+    <script>
+     /*
+    
+    function setUpdate(){
+       
+       
+       
+    
+
+    
+    
+        
+setInterval(setUpdate,10000);
+
+
+        }*/
+    
+    </script>
+    
+    
+</head>
+<body onload="init2();init3();init4();load();add(); " data-spy="scroll" data-target=".navbar" data-offset="50">
+    
+
+     
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+           
+      </button>
+      <a class="navbar-brand" href="#">SimpleStock</a>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            
+          <li><a href="#section1" data-toggle="collapse" data-target="#myNavbar">Stock</a></li>
+          <li><a href="#section2" data-toggle="collapse" data-target="#myNavbar">Records</a></li>
+          <li><a href="#section3" data-toggle="collapse" data-target="#myNavbar">Stock Update</a></li>
+          <li><a href="#section4" data-toggle="collapse" data-target="#myNavbar">Sales</a></li>
+          <li><a href="#section5" data-toggle="collapse" data-target="#myNavbar">Membership</a></li>
+          <li><a href="#section6" data-toggle="collapse" data-target="#myNavbar">Members</a></li>
+        <li><a href="#section7" data-toggle="collapse" data-target="#myNavbar">Reminders</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>    
+
+<div id="section1" class="container-fluid">
+
+<h3 id="t">Stock</h3>  
+
+<div id="con" style="max-height:300px; overflow-y:auto;max-width:500%; overflow-x:auto;">
+      <select class="form-control" style="width:100px" id="test" name="form_select">
+<option value="0">No</option>
+<option value ="1">Yes</option>
+</select>
+    
+    <br>
+    
+<div id="hidden_div" style="display: none;">
+        
+  <font size="6" color="black" face="times new romans"><strong><marquee>
+ 
+   Bank: <span id="item"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+   BAE: <span id="bae"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+    BAP: <span id="bap"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+    Total Sale: <span id="a1"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+  Total Profit: <span id="added"></span>&nbsp;&nbsp;&nbsp;&nbsp; 
+    sold <span id="s"></span>&nbsp;&nbsp;&nbsp;&nbsp;    
+    Total Expenses: <span id="tEx"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+      
+      Projected Profit per annum:<span id="Update"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+     </marquee></strong></font> 
+        </div>
+        
+        
+        <div id="stockUpdates1">
+            
+         
+     
+        </div>
+        
+        <div id="stockUpdates2">
+            
+        Bank: <span id="item1"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+     
+        
+        </div>
+        
+    </div>
+    
+    <br>
+    <br>
+    
+    <div class="col-sm-3">
+<div class="panel-group" id="accordion">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title">
+<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+</h4>
+</div>
+<div id="collapse1" class="panel-collapse collapse">
+<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title">
+<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">The Bank</a>
+</h4>
+</div>
+<div id="collapse2" class="panel-collapse collapse">
+<div class="panel-body"><ons-input modifier="underbar" id="bank" placeholder="Inflow" label="Name"></ons-input>
+    
+          
+          <button class="btn btn-info" id ="save">chanage Name</button>
+           
+          
+          
+           <button class="btn btn-info" id="remove" >remove</button>
+          
+    </div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title">
+<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Projections</a>
+</h4>
+</div>
+<div id="collapse3" class="panel-collapse collapse">
+<div class="panel-body"> 
+    
+            <input class="form-control"  id="pTpvalue" placeholder="Cash In" required type="number"/>
+    <br>
+<button class="btn btn-info" id="pTp">Number of years</button>
+            <br>
+    </div>
+</div>
+</div>
+</div> 
+</div>
+</div>
+    
+    
+    <div id="section2" class="container-fluid">
+        <h3 id="t"> Records</h3>
+          
+           <br>
+           
+        
+        <div class="panel-group" id="accordion3">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title">
+<button data-toggle="collapse" class="btn btn-info" data-parent="#accordion3" id="hide" href="#collapse7">Tabulation</button>
+</h4>
+</div>
+<div id="collapse7" class="panel-collapse collapse">
+
+    <div class="panel-body">
+ 
+   
+      
+          <br>
+          <button data-toggle="collapse" class="btn btn-info" id="back" data-parent="#accordion3" href="#collapse7">Back</button>
+          <br><br>
+              
+              
+            
+           
+            
+        
+         <br>
+
+        
+       <div ng-controller="usersController"> 
+        
+           <div id="contain" style="max-height:320px; overflow-y:auto;max-width:500%; overflow-x:auto;">
+        
+   <table id="regtable2" class="table table-bordered"  BORDER=2 CELLPADDING=1 >
+       <div id="floating"></div>
+       <!-- /tr class="bg-success" -->  
+       
+                <tr>
+    <th style="color:white;" >Action</th>
+        <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+         <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>             
+        <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Open/Close&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+         <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>      
+                <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;litres&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;weight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unitprice&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wholesale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>   
+                <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oldstock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Newstock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Totalstock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sold&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CurrentStock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                     <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sales&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Profit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expenses&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                     <th style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CashIn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                </tr>
+                
+                <tbody id="tablerows3">
+                
+                </tbody>
+       
+       <tr  hidden="hidden" ng-repeat="user in users" >
+           <td>{{user.name | myFilter : limit}}</td>
+       
+       
+       </tr>
+            
+       
+            </table>
+
+        
+        
+            
+            
+      </div>
+    
+          </div>
+    <div id="deletebox">
+        
+   
+    <center>
+            
+             <div id="bg2">
+            <br>
+                <br>     
+<font id="dtext"> Are you sure you want to delete?</font>
+        <br>
+        <br>
+    <button  class="btn btn-info" id="yes" >Yes</button>
+    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+            <button  class="btn btn-info" id="no" >No</button>
+                 
+                  </div>
+    </center>
+    
+       
+    </div>
+     
+    </div>
+    </div>
+</div>
+</div>
+        
+        <div id="itemList" style="max-height:200px overflow-y:auto;max-width:500%; overflow-x:auto;">
+
+          <ons-list>
+      <ons-list-header>
+<center><input type="text" class="form-control" placeholder="Search" style="width:180px;" id="input" ng-model="limit"/>
+ <button class="btn btn-info" id="searchIcon"></button><div id="si" ></div></center>
+  
+              </ons-list-header>
+      <ons-list-item><div id="alert1"></div></ons-list-item>
+      <ons-list-item><div id="alert2"></div></ons-list-item>
+      <ons-list-item><div id="alert3"></div></ons-list-item>
+        <ons-list-item><div id="alert4"></div></ons-list-item>
+              <ons-list-item><div id="alert5"></div></ons-list-item>
+              <ons-list-item><div id="alert6"></div></ons-list-item>
+              <ons-list-item><div id="alert7"></div></ons-list-item>
+              
+       
+          </ons-list>
+        
+
+        
+        </div>
+    
+        
+        
+</div> 
+
+          
+
+<div id="section3" class="container-fluid">
+    
+    <h3 id="t">Stock Update</h3>
+    <div id="container3" style="max-height:480px; overflow-y:auto;max-width:100%; overflow-x:auto">
+  <div class="container">
+     
+
+            <form action="/register" data-toggle="validator" id="registration" method="get">
+                
+                <div class="form-group">
+                    
+                    <label for="name" class="control-label">name</label>
+                    <input class="form-control" id="name" placeholder="name" required type="text"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                
+                <div class="form-group">
+                    
+                    <label for="name" class="control-label">Date</label>
+                    <input class="form-control" id="date" placeholder="date" required type="date"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                
+                <div class="form-group">
+    
+                    
+                    <label for="opcl">Open/Close Time</label>
+                    <br>
+            <select id="opcl" value="Open/Close Time">
+              <option value=""></option>  
+            <option value="Open">Open</option>
+            <option value="Close">Close</option>
+            </select>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    
+                    <label for="time" class="control-label">Time</label>
+                    <input class="form-control" id="time" placeholder="time" required type="time"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label for="type" class="control-label">type</label>
+                    <input class="form-control"  id="type" placeholder="type" required type="text"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="litres" class="control-label">litres</label>
+                    <input class="form-control"  id="litres" placeholder="mils/litres" required type="number"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="weight" class="control-label">Weight</label>
+                    <input class="form-control"  id="weight" placeholder="grams/kilograms" required type="number"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="	unitprice" class="control-label">Unit Price</label>
+                    <input class="form-control"  id="unitprice" placeholder="unit price" required type="number"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="wsale" class="control-label">Wholesale</label>
+                    <input class="form-control"  id="wsale" placeholder="price" required type="number"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="oldstock" class="control-label">Old stock</label>
+                    <input class="form-control"  id="oldstock"  placeholder="old stock" required type="number"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="newstock" class="control-label">New stock</label>
+                    <input class="form-control"  id="newstock" placeholder="new stock" required type="number"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="sold" class="control-label">Sold</label>
+                    <input class="form-control"  id="sold" placeholder="sold" required type="number"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="cashin" class="control-label">Cash In</label>
+                    <input class="form-control"  id="cashin" placeholder="Cash In" required type="number"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                
+                
+                <div class="form-group">
+                    
+                </div>
+                
+            </form>
+    <button class="btn btn-info" id="submit2" onclick="onRegisterPressed2();
+                                                       
+                                                       ">Register</button>
+        </div>
+     
+   
+</div>
+  
+    
+    </div>
+<div id="section4" class="container-fluid">    
+    <div id="calSection">
+    
+    <h3 id="t1">Sales<button  class="btn btn-info" onclick="tom()" id="c" >Calculator</button></h3>  
+    
+    
+
+<form id="cal"name="calculator" >
+    
+    
+
+    
+    
+    <div id="move">
+        
+     <input  id="up"   name="ans"   class='figures'/>
+<br><br>   
+        
+    <input type="reset" value="C" class='button'  style="height:20%; width:20%;" >
+        
+        
+    
+    <input type="button" value="Inventory" style="height:20%; width:50%;" class='button' onClick="h();">
+<br><br>
+<input type="button" value="1" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='1'">
+<input type="button" value="2" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='2'">
+<input type="button" value="3" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='3'">
+<input type="button" value="-" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='-'">
+
+<br> 
+<br>
+<input type="button" value="4" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='4'">
+<input type="button" value="5" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='5'">
+<input type="button" value="6" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='6'">
+        <input type="button" value="+" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='+'">
+<br>
+<br>
+<input type="button" value="7" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='7'">
+<input type="button" value="8" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='8'">
+<input type="button" value="9" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='9'">
+ <input type="button" value="0" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='0'">   
+
+<br>
+<br>
+        
+<input type="button" value="X" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='*'">
+<input type="button" value="/" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value+='/'">
+<input type="button" value="." style="height:20%; width:20%;" class='button'onClick="document.calculator.ans.value+='.'">
+<input type="button" value="=" style="height:20%; width:20%;" class='button' onClick="document.calculator.ans.value=eval(document.calculator.ans.value)">
+
+        
+     
+         
+        
+        
+            
+             
+            
+
+    
+             
+             
+        </form>     
+   <!-- /close tag for div I --> 
+         
+    
+    
+        
+ </div>  
+    
+
+    <div id="I" class="col-sm-3">
+        
+        
+        
+<div class="panel-group" id="accordion2">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title">
+<a data-toggle="collapse" data-parent="#accordion2" href="#collapse4">Average Finder</a>
+</h4>
+</div>
+<div id="collapse4" class="panel-collapse collapse">
+<div class="panel-body">   
+
+    <div id="container2" style="max-height:480px; overflow-y:auto;max-width:100%; overflow-x:auto">
+    
+        <div  style="position:relative; top:108px;"class="form">
+		
+			 <font color="darkseagreen"><h2>Average Finder</h2></font>
+			
+            Monday
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="Day1" class="form-control" type="text" id="Day1"/>
+        
+				
+				<br>
+                <br>
+			
+				Tuesday
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="Day2" class="form-control" type="text" id="Day2"/>
+			
+			<br>
+                <br>
+			
+				Wednesday
+				&nbsp;&nbsp;&nbsp;&nbsp;<input name="Day3" class="form-control" type="text" id="Day3"/>
+			
+			<br>
+                <br>
+			
+				Thursday
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="Day4" class="form-control" type="text" id="Day4"/>
+			
+			<br>
+                <br>
+			
+				Friday
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="Day5" class="form-control" type="text" id="Day5"/>
+			
+			
+			<br>
+                <br>
+				Saturday
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="Day6" class="form-control" type="text" id="Day6"/>
+			
+            <br>
+                <br>
+            
+				Sunday
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="Day7" class="form-control" type="text" id="Day7"/>
+			<br>
+                <br>
+            
+           Figures added
+				<input name="Figures" class="form-control" type="text" id="F"/>
+			<br>
+                <br>
+				total
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="total" class="form-control" type="text" id="total"/>
+
+                <br>
+			<br>
+			
+				<button type="button" value="button" class="btn btn-info" id="calculate">Calculate</button>
+				<p></p>
+				<button type="reset" value="Reset" class="btn btn-info" id="reset" >Reset</button>
+			<br>
+                <br>
+		
+	
+			
+	 </div>
+        
+        </div>
+ 
+    </div>
+</div>
+</div>
+    
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title">
+<a data-toggle="collapse" data-parent="#accordion2" href="#collapse5">Profit calculator</a>
+</h4>
+</div>
+<div id="collapse5" class="panel-collapse collapse">
+<div class="panel-body"><div style="text-align: center">
+       
+
+       
+        
+      <div class="form">
+		
+		<br>
+                <br>
+			 <font color="darkseagreen"><h2>Profit calculator</h2></font>
+
+    Amount:
+          <br><br>
+          <input id="amount2" placeholder="Amount"   style="width:100%;" class="pc"/>
+          
+          <br><br>
+    Interest:
+          <br><br>
+          <input id="intrest2" placeholder="Intrest"  style="width:100%;" class="pc"/>
+        <br><br>
+    Profit:
+          <br>
+          <div id="profit" class="pc"></div>
+    
+    <br>      
+    Total:
+          <br>
+          <div id="totalCost2" class="pc"></div>
+			<br>
+          <br>
+				
+    <button type="button"  onclick="calculate2()" id="Calculate2"  class="btn btn-info">Calculate</button>
+	<button type="button"  id="reset2"  class="btn btn-info">Reset</button>			
+        </div>
+        
+        </div>
+          
+    </div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title">
+<a data-toggle="collapse" data-parent="#accordion2" href="#collapse6">Exchange rate  </a>
+    
+    <input type="button" id="exchangeUpdate" class="btn btn-info" value="Update" style="position:relative; left:10px;" />
+</h4>
+</div>
+<div id="collapse6" class="panel-collapse collapse">
+<div class="panel-body"> 
+        
+<form id="converter" name="converter">
+<table border="0">
+    <tr>
+<td>Kwacha: </td><td><input type="text" class="form-control" id="kwacha" name="kwacha" onChange="kwachaConverter()" /></td>
+</tr>
+     <td>&nbsp;</td>
+<tr>
+<td>Euro:</td><td><input type="text" class="form-control" id="euro" name="euro" onChange="euroConverter()" /></td>
+</tr>
+    <td>&nbsp;</td>
+<tr>
+<td>Dollar:</td><td><input type="text" class="form-control" id="dollar" name="dollar" onChange="dollarConverter()" /></td>
+</tr>
+    <td>&nbsp;</td>
+<tr>
+<td>Pound:</td><td><input type="text" class="form-control" id="pound" name="pound" onChange="poundConverter()" /></td>
+</tr>
+    <td>&nbsp;</td>
+<tr>
+<td>Yen:</td><td><input type="text" class="form-control" id="yen" name="yen" onChange="yenConverter()" /></td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+    
+    <br>
+    <input type="button" class="btn btn-info" value="Convert" />  <input type="button" class="btn btn-info" id="err" value="Reset" /></td>
+</tr>
+</table>
+</form>
+     <!-- /
+keu means kwacha exchange update
+eeu means euro exchange update
+deu means dollar exchange update
+peu means pound exchange update
+yeu means yen exchange update
+-->  
+    <div id="exUpdate" hidden="hidden">
+         <input type="button" id="exback" class="btn btn-info" value="back" style="position:relative; left:10px;" />
+      <div id="con2" style="max-height:300px; overflow-y:auto;max-width:100%; overflow-x:auto"> 
+          <br>
+          Kwacha to:
+        <br>
+    <input type="text" class="form-control"  placeholder="Euro" id="eeu"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Dollar" id="deu"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Pounds" id="peu"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Yen" id="yeu"/>
+        <br>
+        Euro to:
+        <br>
+    <input type="text" class="form-control" placeholder="Kwacha" id="keu"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Dollar" id="deu1"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Pounds" id="peu1"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Yen" id="yeu1"/>
+          <br>
+          Dollar to:
+        <br>
+    <input type="text" class="form-control" placeholder="Kwacha" id="keu1"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Euro" id="eeu1"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Pounds" id="peu2"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Yen" id="yeu2"/>
+          <br>
+           Pound to:
+        <br>
+    <input type="text" class="form-control" placeholder="Kwacha" id="keu2"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Euro" id="eeu2"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Dollar" id="deu2"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Yen" id="yeu3"/>
+          <br>
+          Yen to:
+        <br>
+    <input type="text" class="form-control" placeholder="Kwacha" id="keu3"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Euro" id="eeu3"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Dollar" id="deu3"/>
+        <br>
+    <input type="text" class="form-control" placeholder="Pounds" id="peu3"/>
+          </div>
+        <br>
+        <center><input type="button" id="saveExupdates" class="btn btn-info" value="Save"/></center>
+    </div>
+    </div>
+</div>
+</div>
+</div> 
+</div>
+    </div>
+</div>
+    </div>
+<div id="section5" class="container-fluid">
+  <h3 id="t">Membership</h3>
+     
+    <div class="container">
+            <form action="/register" data-toggle="validator" id="registration" method="get">
+                <div class="form-group">
+                    <label for="email" class="control-label">Email</label>
+                    <input class="form-control" id="email" placeholder="email" required type="text"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="number" class="control-label">Phone number</label>
+                    <input class="form-control" id="number" placeholder="number" required type="number"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="firstname" class="control-label">First name</label>
+                    <input class="form-control"  id="firstname" placeholder="firstname" required type="text"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="surname" class="control-label">Surname</label>
+                    <input class="form-control"  id="surname" placeholder="surname" required type="text"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="sud" class="control-label">Sign up Date</label>
+                    <input class="form-control"  id="sud" required type="date"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label for="ed" class="control-label">Expiry Date</label>
+                    <input class="form-control"  id="ed" required type="date"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comment" class="control-label">Comment</label>
+                    <textarea class="form-control" placeholder="comment"  id="comment" style="height:100%; width:100%;" required type="text" ></textarea>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    
+                </div>
+                
+            </form>
+    <button class="btn btn-info" id="submit" onclick="onRegisterPressed()">Register</button>
+        </div>
+</div>
+    
+  
+    
+    
+<div id="section6" class="container-fluid">
+    
+      
+    
+   <h3 id="t">Members</h3>
+     <br>
+    <div id="container" style="max-height:400px; overflow-y:auto;max-width:100%; overflow-x:auto">
+   <table id="regtable2"  class="table table-bordered" BORDER=2 CELLPADDING=1 >
+           
+            <br>
+            <br>
+       
+                <tr class="bg-success">
+                <th>Action</th>
+                <th>email</th>
+                <th>PhoneNumber</th>
+                <th>Firstname</th>
+                <th>Surname</th>
+                <th>SignUpDate</th>
+                <th>ExpiryDate</th>
+                <th>Comments</th>
+                </tr>
+                
+                <tbody id="tablerows2">
+                
+                </tbody>
+            
+            </table>
+      </div> 
+    
+   <div id="deletebox1">
+        
+   
+    <center>
+            
+             <div id="bg1">
+            <br>
+                <br>     
+<font id="dtext1"> Are you sure you want to delete?</font>
+        <br>
+        <br>
+    <button  class="btn btn-info" id="yes1" >Yes</button>
+    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+            <button  class="btn btn-info" id="no1" >No</button>
+                 
+                  </div>
+    </center>
+    
+       
+    </div>
+    
+     
+</div>
+    
+    
+   
+<script>
+    
+    
+    
+    
+   /*
+   added displays the total profits
+   a1 displays the total sales
+   total expenses(tEx)
+   bank a expenses(bae)
+   bank after profits(bap) better bank plus profits
+   13
+   19
+   
+   */
+    
+      document.getElementById('hide').onclick= function(){
+
+        itemList.style.visibility="hidden"; 
+          hide.style.visibility="hidden";
+}
+
+     document.getElementById('back').onclick= function(){
+
+        itemList.style.visibility="visible"; 
+          hide.style.visibility="visible";
+}
+
+    
+  
+   
+var v = document.getElementsByTagName("td");
+var v2 = document.getElementsByTagName("td");   
+var v3 = document.getElementsByTagName("td");
+var v4 = document.getElementsByTagName("td");
+var v5 = document.getElementsByTagName("td");
+var v6 = document.getElementsByTagName("td");
+    
+    
+function add(){
+    
+   
+    
+    /*
+    code for stock new feed
+    which is located in section one 0977365984 chaila
+    */
+    
+    
+     document.getElementById('test').addEventListener('change', function () {
+var style = this.value == 1 ? 'block' : 'none';
+document.getElementById('hidden_div').style.display = style;
+         
+    
+       var s = document.getElementById('test').value;
+               localStorage.setItem('p2',s);      
+ 
+  
+ 
+});
+    
+   
+    
+function load2(){var nameL2 = localStorage.getItem('p2');}
+    
+    var soldV=[(v4[13].innerText * 1),(v4[32].innerText * 1),(v4[51].innerText * 1)];     
+    var mostSold =0;
+    for(var i = 0;i < soldV.length;i++){
+    if(soldV[i] > mostSold){
+    mostSold = soldV[i];
+       
+    
+    }
+    
+    }
+    
+     document.getElementById('alert1').onclick= function(){
+         
+    hideA.style.visibility="visible";
+    }
+   
+    /*code checks on items in inventory that are running low */  
+    if(v6[14].innerText * 1 > 5){
+    document.getElementById('alert1').innerHTML ="1."+v6[1].innerText +"<div id='hideA' hidden='hidden'>"+ v6[0].innerHTML+"</div>";
+      alert1.style.color="lightgreen";
+    }
+    if(v6[14].innerText * 1 <= 5){
+    document.getElementById('alert1').innerHTML ="1."+"Low on"+" "+v6[1].innerText;
+      alert1.style.color="tan";
+    }
+    
+    if(v6[14].innerText * 1 == 0){
+    document.getElementById('alert1').innerHTML ="1."+"Out of"+" "+v6[1].innerText;
+        alert1.style.color="red";
+    }
+
+        if(v6[33].innerText * 1 > 5){
+    document.getElementById('alert2').innerHTML ="2."+v6[20].innerText;
+    alert2.style.color="lightgreen";
+        
+        }
+        if(v6[33].innerText * 1 <= 5){
+    document.getElementById('alert2').innerHTML ="2."+"Low on"+" "+v6[20].innerText;
+    alert2.style.color="tan";
+        
+        }
+    
+    if(v6[33].innerText * 1 == 0){
+    document.getElementById('alert2').innerHTML ="2."+"Out of"+" "+v6[20].innerText;
+    alert2.style.color="red";
+        
+        }
+    if(v6[52].innerText * 1 > 5){
+    document.getElementById('alert3').innerHTML ="3."+v6[39].innerText;
+    alert3.style.color="lightgreen";
+        
+        }
+    
+    if(v6[52].innerText * 1 <= 5){
+    document.getElementById('alert3').innerHTML ="3."+"Low on"+" "+v6[39].innerText;
+    alert3.style.color="tan";
+        
+        }
+    
+    if(v6[52].innerText * 1 == 0){
+    document.getElementById('alert3').innerHTML ="3."+"Out of"+" "+v6[39].innerText;
+    alert3.style.color="red";
+        
+        }
+    
+    if(v6[71].innerText * 1 >= 5){
+    document.getElementById('alert4').innerHTML ="4."+v6[58].innerText;
+    alert4.style.color="lightgreen";
+        
+        }
+    if(v6[71].innerText * 1 <= 5){
+    document.getElementById('alert4').innerHTML ="4."+"Low on"+" "+v6[58].innerText;
+    alert4.style.color="tan";
+        
+        }
+    
+    if(v6[71].innerText * 1 == 0){
+    document.getElementById('alert4').innerHTML ="4."+"Out of"+" "+v6[58].innerText;
+    alert4.style.color="red";
+        
+        }
+    
+    if(v6[90].innerText * 1 >= 5){
+    document.getElementById('alert5').innerHTML ="5."+v6[77].innerText;
+    alert5.style.color="lightgreen";
+        
+        }
+    if(v6[90].innerText * 1 <= 5){
+    document.getElementById('alert5').innerHTML ="5."+"Low on"+" "+v6[77].innerText;
+    alert5.style.color="tan";
+        
+        }
+    
+    if(v6[90].innerText * 1 == 0){
+    document.getElementById('alert5').innerHTML ="5."+"Out of"+" "+v6[77].innerText;
+    alert5.style.color="red";
+     alert5.style.visibility="hidden";   
+        }
+    if(v6[90].innerText * 1 > 0){
+    document.getElementById('alert5').innerHTML ="5."+"Out of"+" "+v6[77].innerText;
+    alert5.style.color="red";
+     alert5.style.visibility="visible"; 
+    }
+    
+if (0<1){
+   
+    document.getElementById('added').innerHTML = (v[16].innerText * 1);
+    
+    document.getElementById('a1').innerHTML =(v2[15].innerText * 1);
+    document.getElementById('tEx').innerHTML=(v3[17].innerText * 1);
+    document.getElementById('bae').innerHTML=((nameL * 1) - (v3[17].innerText * 1));
+    document.getElementById('bap').innerHTML=((nameL * 1) + (v[16].innerText * 1)); document.getElementById('item').innerHTML =nameL; 
+    document.getElementById('s').innerHTML = mostSold;
+    }
+if (0<1){
+   
+    document.getElementById('added').innerHTML =((v[16].innerText * 1)+(v[35].innerText * 1));
+    document.getElementById('a1').innerHTML =((v2[15].innerText * 1)+(v2[34].innerText * 1));
+    document.getElementById('tEx').innerHTML=((v3[17].innerText * 1)+(v3[36].innerText * 1));
+    document.getElementById('bae').innerHTML=((nameL * 1) - ((v3[17].innerText * 1)+(v3[36].innerText * 1)));
+    document.getElementById('bap').innerHTML=((nameL * 1) + ((v[16].innerText * 1)+(v[35].innerText * 1))); document.getElementById('item').innerHTML =nameL; 
+    
+    }
+    
+if (0<1){
+   
+    document.getElementById('added').innerHTML =+ ((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1));
+    document.getElementById('a1').innerHTML =((v[15].innerText * 1)+(v[34].innerText * 1)+(v[53].innerText * 1));
+    document.getElementById('tEx').innerHTML=((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1));
+    document.getElementById('bae').innerHTML=((nameL * 1) - ((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)));
+    document.getElementById('bap').innerHTML=((nameL * 1) + ((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1))); document.getElementById('item').innerHTML =nameL;  
+    }
+    
+if (0<1){
+   
+    document.getElementById('added').innerHTML =((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)); 
+    document.getElementById('a1').innerHTML =((v[15].innerText * 1)+(v[34].innerText * 1)+(v[53].innerText * 1)+(v[72].innerText * 1));
+    document.getElementById('tEx').innerHTML=((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1));
+     document.getElementById('bae').innerHTML=((nameL * 1) - ((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)));
+    document.getElementById('bap').innerHTML=((nameL * 1) + ((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1))); document.getElementById('item').innerHTML =nameL;  
+    }
+if (0<1){
+   
+    document.getElementById('added').innerHTML =((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1));
+    
+  document.getElementById('a1').innerHTML =((v[15].innerText * 1)+(v[34].innerText * 1)+(v[53].innerText * 1)+(v[72].innerText * 1)+(v[91].innerText * 1));
+     document.getElementById('tEx').innerHTML=((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1));
+    document.getElementById('bae').innerHTML=((nameL * 1) - ((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)));
+    document.getElementById('bap').innerHTML=((nameL * 1) + ((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1))); document.getElementById('item').innerHTML =nameL;  
+    }
+    
+if (0<1){
+   
+    document.getElementById('added').innerHTML =((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1));
+    
+    document.getElementById('a1').innerHTML =((v[15].innerText * 1)+(v[34].innerText * 1)+(v[53].innerText * 1)+(v[72].innerText * 1)+(v[91].innerText * 1)+(v[110].innerText * 1));
+     document.getElementById('tEx').innerHTML=((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1));
+     document.getElementById('bae').innerHTML=((nameL * 1) - ((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)));
+    document.getElementById('bap').innerHTML=((nameL * 1) + ((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1))); document.getElementById('item').innerHTML =nameL;  
+
+}
+   
+if (0<1){
+   
+    document.getElementById('added').innerHTML =((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1));
+    document.getElementById('a1').innerHTML =((v[15].innerText * 1)+(v[34].innerText * 1)+(v[53].innerText * 1)+(v[72].innerText * 1)+(v[91].innerText * 1)+(v[110].innerText * 1)+(v[129].innerText * 1));
+   document.getElementById('tEx').innerHTML=((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)+(v3[131].innerText * 1)); 
+    document.getElementById('bae').innerHTML=((nameL * 1) - ((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)+(v3[131].innerText * 1)));
+    document.getElementById('bap').innerHTML=((nameL * 1) + ((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1))); document.getElementById('item').innerHTML =nameL;  
+}
+    
+if (0<1){
+   
+    document.getElementById('added').innerHTML =((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1));
+    document.getElementById('a1').innerHTML =((v[15].innerText * 1)+(v[34].innerText * 1)+(v[53].innerText * 1)+(v[72].innerText * 1)+(v[91].innerText * 1)+(v[110].innerText * 1)+(v[129].innerText * 1)+(v[148].innerText * 1))
+    document.getElementById('tEx').innerHTML=((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)+(v3[131].innerText * 1)+(v3[150].innerText * 1));
+document.getElementById('bae').innerHTML=((nameL * 1) - ((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)+(v3[131].innerText * 1)+(v3[150].innerText * 1)));
+    document.getElementById('bap').innerHTML=((nameL * 1) + ((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)));  document.getElementById('item').innerHTML =nameL;     
+
+}
+    
+                                                                
+if (0<1){
+   
+    document.getElementById('added').innerHTML =((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)+(v[168].innerText * 1));
+    
+     document.getElementById('a1').innerHTML =((v[15].innerText * 1)+(v[34].innerText * 1)+(v[53].innerText * 1)+(v[62].innerText * 1)+(v[91].innerText * 1)+(v[110].innerText * 1)+(v[129].innerText * 1)+(v[148].innerText * 1)+(v[167].innerText * 1));
+    document.getElementById('tEx').innerHTML=((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)+(v3[131].innerText * 1)+(v3[150].innerText * 1)+(v3[169].innerText * 1));
+document.getElementById('bae').innerHTML=((nameL * 1) - ((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)+(v3[131].innerText * 1)+(v3[150].innerText * 1)+(v3[169].innerText * 1)));
+    document.getElementById('bap').innerHTML=((nameL * 1) + ((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)+(v[168].innerText * 1))); document.getElementById('item').innerHTML =nameL;      
+
+}
+    
+if (0<1){
+   
+    document.getElementById('added').innerHTML =((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)+(v[168].innerText * 1)+(v[187].innerText * 1));
+document.getElementById('a1').innerHTML =((v[15].innerText * 1)+(v[34].innerText * 1)+(v[53].innerText * 1)+(v[72].innerText * 1)+(v[91].innerText * 1)+(v[110].innerText * 1)+(v[129].innerText * 1)+(v[148].innerText * 1)+(v[167].innerText * 1)+(v[186].innerText * 1));
+    document.getElementById('tEx').innerHTML=((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)+(v3[131].innerText * 1)+(v3[150].innerText * 1)+(v3[169].innerText * 1)+(v3[188].innerText * 1));
+document.getElementById('bae').innerHTML=((nameL * 1) - ((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)+(v3[131].innerText * 1)+(v3[150].innerText * 1)+(v3[169].innerText * 1)+(v3[188].innerText * 1)));
+    document.getElementById('bap').innerHTML=((nameL * 1) + ((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)+(v[168].innerText * 1)+(v[187].innerText * 1)));  document.getElementById('item').innerHTML =nameL;      
+
+}
+    
+if (0<1){
+   
+    document.getElementById('added').innerHTML =((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)+(v[168].innerText * 1)+(v[187].innerText * 1)+(v[206].innerText * 1));
+    
+    
+    document.getElementById('a1').innerHTML =((v[15].innerText * 1)+(v[34].innerText * 1)+(v[53].innerText * 1)+(v[72].innerText * 1)+(v[91].innerText * 1)+(v[110].innerText * 1)+(v[129].innerText * 1)+(v[148].innerText * 1)+(v[167].innerText * 1)+(v[186].innerText * 1)+(v[205].innerText * 1));
+    document.getElementById('tEx').innerHTML=((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)+(v3[131].innerText * 1)+(v3[150].innerText * 1)+(v3[169].innerText * 1)+(v3[188].innerText * 1)+(v3[207].innerText * 1));
+    document.getElementById('bae').innerHTML=((nameL * 1) - ((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)+(v3[131].innerText * 1)+(v3[150].innerText * 1)+(v3[169].innerText * 1)+(v3[188].innerText * 1)+(v3[207].innerText * 1)));
+    document.getElementById('bap').innerHTML=((nameL * 1) + ((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)+(v[168].innerText * 1)+(v[187].innerText * 1)+(v[205].innerText * 1))); document.getElementById('item').innerHTML =nameL;  
+    }
+    
+if (0<1){
+   
+    document.getElementById('added').innerHTML =((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)+(v[168].innerText * 1)+(v[187].innerText * 1)+(v[206].innerText * 1)+(v[225].innerText * 1));
+     
+    
+    document.getElementById('a1').innerHTML =((v[15].innerText * 1)+(v[34].innerText * 1)+(v[53].innerText * 1)+(v[72].innerText * 1)+(v[91].innerText * 1)+(v[110].innerText * 1)+(v[129].innerText * 1)+(v[148].innerText * 1)+(v[167].innerText * 1)+(v[186].innerText * 1)+(v[205].innerText * 1)+(v[224].innerText * 1));
+    document.getElementById('tEx').innerHTML=((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)+(v3[131].innerText * 1)+(v3[150].innerText * 1)+(v3[169].innerText * 1)+(v3[188].innerText * 1)+(v3[207].innerText * 1)+(v3[226].innerText * 1));
+  document.getElementById('bae').innerHTML=((nameL * 1) - ((v3[17].innerText * 1)+(v3[36].innerText * 1)+(v3[55].innerText * 1)+(v3[74].innerText * 1)+(v3[93].innerText * 1)+(v3[112].innerText * 1)+(v3[131].innerText * 1)+(v3[150].innerText * 1)+(v3[169].innerText * 1)+(v3[188].innerText * 1)+(v3[207].innerText * 1)+(v3[226].innerText * 1)));
+    document.getElementById('bap').innerHTML=((nameL * 1) + ((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)+(v[168].innerText * 1)+(v[187].innerText * 1)+(v[205].innerText * 1)+(v[225].innerText * 1))); 
+     document.getElementById('item').innerHTML =nameL;  
+
+}
+     
+    
+
+  
+    
+   
+};
+
+    document.getElementById("pTp").onclick=function(){
+       /*pTp means  projected total profits*/
+       
+     var pTpvalue = document.getElementById("pTpvalue").value;
+document.getElementById('Update').innerHTML =(((v2[16].innerText * 1)*(365*1))*( pTpvalue *1));
+document.getElementById('Update').innerHTML =((((v[16].innerText * 1)+(v[35].innerText * 1))*(365*1))*( pTpvalue *1));
+ document.getElementById('Update').innerHTML =((((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1))*(365*1))*( pTpvalue *1));
+document.getElementById('Update').innerHTML =((((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1))*(365*1))*( pTpvalue *1));
+document.getElementById('Update').innerHTML =((((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1))*(365*1))*( pTpvalue *1));
+document.getElementById('Update').innerHTML =((((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1))*(365*1))*( pTpvalue *1));
+document.getElementById('Update').innerHTML =((((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1))*(365*1))*( pTpvalue *1));
+document.getElementById('Update').innerHTML =((((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1))*(365*1))*( pTpvalue *1));
+document.getElementById('Update').innerHTML =((((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)+(v[168].innerText * 1))*(365*1))*( pTpvalue *1));
+document.getElementById('Update').innerHTML =((((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)+(v[168].innerText * 1)+(v[187].innerText * 1))*(365*1))*( pTpvalue *1));
+document.getElementById('Update').innerHTML =((((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)+(v[168].innerText * 1)+(v[187].innerText * 1)+(v[206].innerText * 1))*(365*1))*( pTpvalue *1));
+document.getElementById('Update').innerHTML =((((v[16].innerText * 1)+(v[35].innerText * 1)+(v[54].innerText * 1)+(v[73].innerText * 1)+(v[92].innerText * 1)+(v[111].innerText * 1)+(v[130].innerText * 1)+(v[149].innerText * 1)+(v[168].innerText * 1)+(v[187].innerText * 1)+(v[206].innerText * 1)+(v[225].innerText * 1))*(365*1))*( pTpvalue *1));
+        
+ }
+
+
+    document.getElementById('save').onclick= function(){
+            
+        var bank = document.getElementById('bank').value;
+               localStorage.setItem('p1',bank);
+        
+        setTimeout(function(){
+       window.location='index.html';
+    }, 500);
+        
+       
+   }
+
+        var nameL = localStorage.getItem('p1');
+ 
+    function load(){
+       
+        if(nameL){
+             document.getElementById('bank').value = nameL;
+                  
+    }
+            
+
+}
+    
+    
+     
+ document.getElementById('item').innerHTML =nameL;  
+    
+    
+    document.getElementById('remove').onclick= function(){
+
+        document.getElementById('bank').value = '';
+        localStorage.removeItem('p1');
+
+    document.getElementById('item').innerHTML =nameL; 
+         
+}
+
+   
+    document.getElementById('item1').innerHTML =nameL;
+    
+    
+    
+    
+    /*code that runs the exchange rate
+    err means exchange rate reset
+    
+    */
+    function kwachaConverter(){
+document.converter.euro.value = document.converter.kwacha.value * e
+document.converter.dollar.value = document.converter.kwacha.value *d
+document.converter.pound.value = document.converter.kwacha.value * p
+document.converter.yen.value = document.converter.kwacha.value * y
+}
+    function euroConverter(){
+document.converter.kwacha.value = document.converter.euro.value * k
+document.converter.dollar.value = document.converter.euro.value * d1
+document.converter.pound.value = document.converter.euro.value * p1
+document.converter.yen.value = document.converter.euro.value * y1
+}
+function dollarConverter(){
+document.converter.kwacha.value = document.converter.dollar.value * k1
+document.converter.euro.value = document.converter.dollar.value * e1
+document.converter.pound.value = document.converter.dollar.value * p2
+document.converter.yen.value = document.converter.dollar.value * y2
+}
+function poundConverter(){
+document.converter.dollar.value = document.converter.pound.value * d2
+document.converter.euro.value = document.converter.pound.value * e2
+document.converter.yen.value = document.converter.pound.value * y3
+document.converter.kwacha.value = document.converter.pound.value * k2
+}
+function yenConverter(){
+document.converter.dollar.value = document.converter.yen.value * d3
+document.converter.pound.value = document.converter.yen.value * p3
+document.converter.euro.value = document.converter.yen.value * e3
+document.converter.kwacha.value = document.converter.yen.value * k3
+}
+    /*
+exchangeUpdate  
+exUpdate
+keu
+eeu
+deu
+peu
+yeu
+converter
+con2
+eeu
+deu
+peu
+yeu
+keu
+deu1
+peu1
+yeu1
+keu1
+eeu1
+peu2
+yeu2
+eeu2
+deu2
+keu2
+yeu3
+eeu3
+deu3
+peu3
+keu3
+    */
+    
+document.getElementById("saveExupdates").onclick=function(){
+            
+        var euroUpD = document.getElementById('eeu').value;
+        
+                localStorage.setItem('euro',euroUpD);
+                
+         var dollarUpD = document.getElementById('deu').value;
+        
+                localStorage.setItem('dollar',dollarUpD);
+                
+        var poundUpD = document.getElementById('peu').value;
+        
+                localStorage.setItem('pound',poundUpD);
+                
+         var yenUpD = document.getElementById('yeu').value;
+        
+                localStorage.setItem('yen',yenUpD);
+                
+        var kwachaUpD = document.getElementById('keu').value;
+        
+                localStorage.setItem('kwacha',kwachaUpD);
+                
+        var euroUpD1 = document.getElementById('eeu1').value;
+        
+                localStorage.setItem('euro1',euroUpD1);
+                
+         var dollarUpD1 = document.getElementById('deu1').value;
+        
+                localStorage.setItem('dollar1',dollarUpD1);
+                
+        var poundUpD1 = document.getElementById('peu1').value;
+        
+                localStorage.setItem('pound1',poundUpD1);
+                
+         var yenUpD1 = document.getElementById('yeu1').value;
+        
+                localStorage.setItem('yen1',yenUpD1);
+                
+        var kwachaUpD1 = document.getElementById('keu1').value;
+        
+                localStorage.setItem('kwacha1',kwachaUpD1);
+    
+    var euroUpD2 = document.getElementById('eeu2').value;
+        
+                localStorage.setItem('euro2',euroUpD2);
+                
+         var dollarUpD2 = document.getElementById('deu2').value;
+        
+                localStorage.setItem('dollar2',dollarUpD2);
+                
+        var poundUpD2 = document.getElementById('peu2').value;
+        
+                localStorage.setItem('pound2',poundUpD2);
+                
+         var yenUpD2 = document.getElementById('yeu2').value;
+        
+                localStorage.setItem('yen2',yenUpD2);
+                
+        var kwachaUpD2 = document.getElementById('keu2').value;
+        
+                localStorage.setItem('kwacha2',kwachaUpD2);
+    
+    var euroUpD3 = document.getElementById('eeu3').value;
+        
+                localStorage.setItem('euro3',euroUpD3);
+                
+         var dollarUpD3 = document.getElementById('deu3').value;
+        
+                localStorage.setItem('dollar3',dollarUpD3);
+                
+        var poundUpD3 = document.getElementById('peu3').value;
+        
+                localStorage.setItem('pound3',poundUpD3);
+                
+         var yenUpD3 = document.getElementById('yeu3').value;
+        
+                localStorage.setItem('yen3',yenUpD3);
+                
+        var kwachaUpD3 = document.getElementById('keu3').value;
+        
+                localStorage.setItem('kwacha3',kwachaUpD3);
+                
+                
+                
+        
+    }
+           
+     var e = localStorage.getItem('euro');
+     var d = localStorage.getItem('dollar');
+     var k = localStorage.getItem('kwacha');
+     var p = localStorage.getItem('pound');
+     var y = localStorage.getItem('yen');
+    var e1 = localStorage.getItem('euro1');
+     var d1 = localStorage.getItem('dollar1');
+     var k1 = localStorage.getItem('kwacha1');
+     var p1 = localStorage.getItem('pound1');
+     var y1 = localStorage.getItem('yen1');
+    var e2 = localStorage.getItem('euro2');
+     var d2 = localStorage.getItem('dollar2');
+     var k2 = localStorage.getItem('kwacha2');
+     var p2 = localStorage.getItem('pound2');
+     var y2 = localStorage.getItem('yen2');
+    var e3 = localStorage.getItem('euro3');
+     var d3 = localStorage.getItem('dollar3');
+     var k3 = localStorage.getItem('kwacha3');
+     var p3 = localStorage.getItem('pound3');
+     var y3= localStorage.getItem('yen3');
+    
+    
+     document.getElementById("exchangeUpdate").onclick=function(){
+         
+     $('#converter').hide();
+         $('#exUpdate').show();
+     }
+     
+     document.getElementById("exback").onclick=function(){
+         
+     $('#converter').show();
+         $('#exUpdate').hide();
+     }
+     
+    
+    
+   document.getElementById("err").onclick=function(){
+   
+     $('#kwacha').val('');
+     $('#euro').val('');
+     $('#dollar').val('');
+     $('#pound').val('');
+     $('#yen').val('');
+   
+   }
+    
+    /*search bar code*/
+    var app= angular.module("mainApp",[]);
+    
+    app.filter("myFilter",function(){
+        
+        
+
+    return function(input,option){ 
+        
+        if(v5[1].innerText==option){
+            document.getElementById('si').innerHTML ="<h3 style='color:lightgreen'>Located</h3>"+ v5[0].innerHTML;
+            
+            
+     si.style.display="inherit";
+        }
+        if(option==v5[20].innerText){
+            
+            document.getElementById('si').innerHTML ="<h3 style='color:lightgreen'>Located</h3>"+ v5[19].innerHTML;
+            
+            
+        si.style.display="inherit";
+        }
+        
+         if(option==v5[39].innerText){
+            document.getElementById('si').innerHTML ="<h3 style='color:lightgreen'>Located</h3>"+ v5[38].innerHTML;
+            
+        
+        si.style.display="inherit";    
+        
+        }
+        if(option==v5[58].innerText){
+            document.getElementById('si').innerHTML ="<h3 style='color:lightgreen'>Located</h3>"+ v5[57].innerHTML;
+            
+        
+         si.style.display="inherit";   
+        
+        }
+        if(option==v5[77].innerText){
+            document.getElementById('si').innerHTML ="<h3 style='color:lightgreen'>Located</h3>"+ v5[76].innerHTML;
+            
+        
+        si.style.display="inherit";    
+        
+        }
+        if(option==""){
+        si.style.display="none";
+        }
+        }
+      
+    
+    });
+    
+    
+    
+    app.controller("usersController",function($scope){
+    
+    $scope.users=[
+        {id: 1,name:v5[1].innerText},
+        {id: 2,name:v5[20].innerText},
+        {id: 3,name:v5[39].innerText},
+        {id: 4,name:v5[58].innerText},
+        {id: 5,name:v5[77].innerText}
+    ];});
+    
+   
+     
+ 
+    
+    $('#contain').scroll(function() { 
+        
+        $('#floating').show();
+        
+    $('#floating').animate({top:$(this).scrollTop()},20,"linear");;
+});
+    
+</script>
+    
+    
+    
+<div id="section7" class="container-fluid">
+    
+    <h3 id="t">Reminders</h3>
+    
+    
+   
+    
+    <div onclick="show2()" id="box2"><div onclick="Max1()" id="sb3">+</div><div onclick="Min1()"  align="right" id="sb4"></div><textarea  id="ta2" placeholder="create remainder"></textarea>
+       
+            
+    </div>
+        
+    <div   onclick="show()" id="box1"><div onclick="Max()" id="sb" >+</div><div id="sb2" align="right" onclick="Min()"></div>
+              <div id="sbox1">
+                  
+                  <input class="form-control" id="date1" placeholder="Date" required type="date"/>
+                  
+                  <br>
+                    <input class="form-control" id="time1" placeholder="Time" required type="time"/>
+                  <textarea  id="ta1" placeholder="remainder"></textarea>
+                  
+                  <button class="btn btn-warning" id="submit4" onclick="onRegisterPressed4()">Save</button>
+                  
+                  
+                  
+                  
+                   <div id="container" style="max-height:45%; overflow-y:auto;max-width:90%; overflow-x:auto; top:30px; position:relative;">
+   <table id="regtable5"  class="table table-bordered" BORDER=2 CELLPADDING=1 >
+          
+            <br>
+            <br>
+       
+                <tr>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Action&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reminder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        
+                </tr>
+                
+                <tbody id="tablerows5">
+                
+                </tbody>
+            
+            </table>
+      </div>
+                  
+                  
+                  
+                  <div id="memDiv">
+                  
+                  
+                  
+                  
+                  
+                  </div><div id="sU" onclick="slideU()"></div></div>  
+
+            </div>
+        
+
+    <script>
+        
+    
+        
+
+     
+     
+    
+
+    
+   function Max() {
+    if(box1.offsetHeight < 300) {
+        box1.style.width = 100 + "%";
+        box1.style.height = 100 + "%";
+        box1.style.top = 100 + "px";
+        box1.style.left = 1 + 'px';
+        sb2.style.left = 10 + 'px';
+        ta1.style.width = 80 + "%";
+        ta1.style.height = 20 + "%";
+        ta2.style.visibility = 'hidden';
+        box2.style.visibility = 'hidden';
+        ta1.style.visibility = 'visible';
+        sb.style.visibility = 'hidden';
+        sb2.style.visibility = 'visible';
+        sb2.style.bottom = -5    + "px";
+        sbox1.style.visibility = 'visible';
+        sbox1.style.height = 85  + "%";
+        memDiv.style.visibility = 'hidden';
+        sb.style.display = 'none';
+        sbox1.style.left = 5+'%';
+        
+    }
+        
+    }
+    
+    function Min() {
+    if(box1.offsetHeight > 300) {
+        box1.style.width = 100 + "px";
+        box1.style.height = 100 + "px";
+        box1.style.left =  33 + "%";
+        ta1.style.width = 50 + "px";
+        ta1.style.height = 50 + "px";
+          box1.style.top = 150 + "px";
+        box2.style.visibility = 'visible';
+        sb.style.visibility = 'visible';
+        sb2.style.visibility = 'hidden';
+        ta1.style.visibility = 'hidden';
+        sbox1.style.visibility = 'hidden';
+        box1.style.transition =  0 +'s';
+    
+         memDiv.style.visibility = 'hidden';
+        sb.style.display = 'inherit';
+        
+        
+        
+    }
+    }
+    
+    function Max1() {
+    if(box2.offsetHeight < 300) {
+        box2.style.width = 100 + "%";
+        box2.style.height = 100 + "%";
+        ta2.style.width = 90 + "%";
+        ta2.style.height = 80 + "%";
+        ta2.style.visibility = 'visible';
+        box2.style.top = 1 + "px";
+        box2.style.left = 1 + 'px';
+        box2.style.bottom = 100 + 'px';
+         box1.style.visibility = 'hidden';
+         box1.style.backgroundColor = 'tan';
+        ta1.style.visibility = 'hidden';
+        sb4.style.visibility = 'visible';
+         sb4.style.left= 5 + "px";
+        sb4.style.bottom = 765 + "px";
+        sb4.style.position = "absolute";
+        box2.style.top = 100 + "px";
+       
+    }
+        
+    }
+    
+    function Min1() {
+    if(box2.offsetHeight > 300) {
+        
+        box1.style.backgroundColor = 'blanchedalmond';
+        box2.style.width = 80 + "px";
+        box2.style.height = 80 + "px";
+        ta2.style.width = 50 + "px";
+        ta2.style.height = 50 + "px";
+        box1.style.visibility = 'visible';
+        box2.style.left = 80 + "px";
+        ta2.style.visibility = 'hidden';
+         box2.style.top = 200 + "px";
+    }
+    }
+    
+   
+
+    function show(){
+       if(box2.offsetHeight < 300){
+
+           sb3.style.visibility = 'hidden';
+           sb4.style.visibility = 'hidden';
+        
+        
+       } 
+    }
+    
+    function show2(){
+       if(box2.offsetHeight < 300){
+           sb.style.visibility = 'hidden';
+           sb2.style.visibility = 'hidden';
+           sb3.style.visibility = 'visible';
+           sb4.style.visibility = 'hidden';
+           sb5.style.visibility = 'hidden';
+           sb6.style.visibility = 'hidden';
+       } 
+    }
+    function show3(){
+       if(box2.offsetHeight < 300){
+           sb.style.visibility = 'hidden';
+           sb2.style.visibility = 'hidden';
+           sb3.style.visibility = 'hidden';
+           sb4.style.visibility = 'hidden';
+           sb5.style.visibility = 'visible';
+           
+           
+           
+       } 
+    }
+        function slideD(){
+            if(1<5){
+                sbox1.style.left = 5+'%';
+                sbox1.style.width = 90+'%';
+                 sbox1.style.height = 50 + "%";
+                ta1.style.height = 20 + "%";
+                memDiv.style.visibility = 'visible';
+                sd.style.display = 'none';
+            }
+        }
+    
+        
+    </script>
+    
+    </div>
+    
+  
+</body>
+</html>
